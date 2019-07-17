@@ -35,7 +35,7 @@ resource "aws_s3_bucket" "default" {
     }
 
     transition {
-      days          = var.standard_transition_days
+      days          = var.glacier_transition_days
       storage_class = "GLACIER"
     }
 
