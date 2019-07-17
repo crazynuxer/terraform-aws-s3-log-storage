@@ -28,9 +28,6 @@ resource "aws_s3_bucket" "default" {
     prefix = var.lifecycle_prefix
     tags   = var.lifecycle_tags
 
-    noncurrent_version_expiration {
-      days = var.noncurrent_version_expiration_days
-    }
 
     noncurrent_version_transition {
       days          = var.noncurrent_version_transition_days
@@ -39,13 +36,9 @@ resource "aws_s3_bucket" "default" {
 
     transition {
       days          = var.standard_transition_days
-      storage_class = "STANDARD_IA"
-    }
-
-    transition {
-      days          = var.glacier_transition_days
       storage_class = "GLACIER"
     }
+
 
     expiration {
       days = var.expiration_days
