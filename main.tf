@@ -29,11 +29,6 @@ resource "aws_s3_bucket" "default" {
     tags   = var.lifecycle_tags
 
 
-    noncurrent_version_transition {
-      days          = var.noncurrent_version_transition_days
-      storage_class = "GLACIER"
-    }
-
     transition {
       days          = var.glacier_transition_days
       storage_class = "GLACIER"
